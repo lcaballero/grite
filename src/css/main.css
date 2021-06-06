@@ -1,0 +1,122 @@
+body {
+    background-color: #eee;
+    font-size: 1.2em;
+    line-height: 1.1em;
+}
+h1,h2 {
+    margin:0;
+    padding:0;
+}
+
+/* Custom tag styling experiment */
+tag {
+    background-color: #ddd;
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 8px;
+    font-size: .75em;
+}
+
+/* Card */
+.card {
+    border-radius: 10px;
+    border: 1px solid #000;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.30);
+}
+.frame {
+    padding:10px;
+}
+
+.card.active {
+    border: 1px solid rgb(0, 113, 227);
+    box-shadow: 2px 2px 8px rgba(0, 113, 227, 0.80);    
+}
+
+/* Layout */
+.third .card {
+    width: 33.3%;
+}
+.half .card {
+    width: 50%;
+}
+.full .card {
+    width: 100%;
+}
+.quarter .card {
+    width: 25%;
+}
+
+.card + .card {
+    margin: 16px 0;
+}
+
+.window {
+    padding: 10px;
+}
+
+/* main view port */
+.main {
+    position: relative;
+}
+
+/* help */
+.help {
+    position: relative;
+}
+.help > .modal {
+    position: fixed;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+    height: 50%;    
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: 10px;    
+}
+.help dl {
+    display: block;
+    margin-top: 20px;
+}
+.help dt {
+    display: inline-block;
+}
+.help dd {
+    display: inline-block;
+}
+
+/* strip */
+.strip {
+    width: 100%;
+    position: relative;
+}
+.strip .plane {
+    position: fixed;
+    bottom: 0;
+    left: 0;    
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    
+    border-top: 2px solid #ddd;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.20);    
+}
+.strip ul, .strip ul li {
+    padding:0;
+    margin:0;
+    style: none;
+}
+.strip li {
+    display: inline-block;
+}
+.strip li b {
+    padding-right: 3px;
+}
+.strip li+li {
+    border-left: 1px solid #333;
+    padding-left: 4px;
+}
+
+.closed {
+    display: none;
+    visibility: hidden;
+}

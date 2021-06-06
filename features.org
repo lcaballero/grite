@@ -1,0 +1,17 @@
+* Features
+
+** Saving
+   - Save the layout of cards
+     - Add bookmarks to views or at least to certain cards
+
+** Navigating
+   - Navigate be way of a Vimium like interface
+     - Active node provides the context and is highlighted
+       - The context brings up options when
+   - Paths, like bread crumbs, are used to navigate backward through
+     the graph
+   - Favorites
+
+** Layouts
+   - Thirds / Halfs / Quarter / Full
+   - Popups and Bury Cards
