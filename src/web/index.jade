@@ -2,3 +2,12 @@ doctype html
 html(lang="en")
   head
     meta(charset="utf-8")
+    title
+      | Forced Evolution
+    include partials/css.pug
+    include partials/scripts.pug
+  body
+    div.main
+      include partials/help.pug
+      include partials/strip.pug
+      div.window.layout.half

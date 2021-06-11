@@ -13,7 +13,7 @@ clean() {
 
 build() {
     mkdir -p "$DST"
-    rsync -av --exclude=".*" ./src/assets/ "$DST" > /dev/null
+    rsync -av --exclude=".*" ./src/web/assets/ "$DST" > /dev/null
 
     local p=$(pwd)
     local file="$(echo $1 | sed -e "s,$p/src,,")"
@@ -40,7 +40,7 @@ compile() {
 
 convert() {
     e --file "$1.org" \
-      --chdir "$BLD/docs" \
+      --chdir "$BLD/web/docs" \
       --batch --kill -Q \
       --eval "$(< export.el)"
 }
@@ -55,19 +55,19 @@ convert-to-html() {
 
 plain-hq() {
     hq plain \
-       --in "$BLD/docs/$1.html" \
-       --out "$BLD/docs/$1.html"
+       --in "$BLD/web/docs/$1.html" \
+       --out "$BLD/web/docs/$1.html"
 }
 
 untangle() {
-    e ".build/docs/$1.org" --batch -f org-babel-tangle
+    e ".build/web/docs/$1.org" --batch -f org-babel-tangle
 }
 
 to-html() {
     clean
     build
     mkdir "$BLD"
-    cp -r ./src/ .build
+    cp -r ./src/web .build
 
     convert-to-html "index"
     convert-to-html "tools.characters"
@@ -77,20 +77,23 @@ to-html() {
     convert-to-html "q1"
     convert-to-html "dev-tools"
 
-    (
-        cd .build && \
-            hq transform \
-               --in index.tmpl.html \
-               --out ../.dist/index.html
-    )
+    # (
+    #     cd .build && \
+    #         hq transform \
+    #            --in index.tmpl.html \
+    #            --out ../.dist/index.html
+    # )
 
     cms-db build --dir .build > \
         .dist/cms-db.json
 
+    run-jaded
+    cp src/web/index.html.bak .dist/index.html
+
     rm-bak
 }
 
-from-jade() {
+run-jaded() {
     local dir=$(pwd)
     (
         cd src && \
@@ -103,5 +106,7 @@ from-jade() {
             sed -E '/^$/d' web/index.html.pre > web/index.html.bak
     )
 }
+
+
 
 "$@"
