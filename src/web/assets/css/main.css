@@ -1,11 +1,12 @@
 body {
     background-color: #eee;
     font-size: 1.2em;
-    line-height: 1.1em;
+    line-height: 1.2em;
 }
 h1,h2 {
     margin:0;
     padding:0;
+    margin-bottom: .5em;
 }
 
 /* Custom tag styling experiment */
@@ -88,6 +89,7 @@ tag {
 .strip {
     width: 100%;
     position: relative;
+    display: none;
 }
 .strip .plane {
     position: fixed;

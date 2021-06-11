@@ -1,0 +1,8 @@
+#+begin_src yaml :tangle favorites.yaml
+---
+
+
+#+end_src
+* Dev Tools
+  - [[https://github.com/RobertWHurst/KeyboardJS][KeyboardJS]]
+  - [[https://github.com/PuerkitoBio/goquery][goquery]]

@@ -1,12 +1,5 @@
 var prev = "";
 
-function addCss(file) {
-   var k = document.createElement("link");
-   k.setAttribute('href', file);
-   k.setAttribute('rel', 'stylesheet');
-   document.head.appendChild(k);
-}
-
 function getTimestamp() {
    axios.get("/updated.txt")
       .then(function(resp) {
@@ -37,14 +30,5 @@ function getTimestamp() {
       })
       .then(function() {
          //console.log('always')
-      })
+      });
 }
-
-setInterval(getTimestamp, 1000)
-
-keyboardJS.bind('h', (ev) => {
-   console.log("show help")
-   var help = document.querySelector('.help');
-   console.log(help)
-   help.classList.toggle("closed");
-})

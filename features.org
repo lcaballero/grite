@@ -1,5 +1,4 @@
 * Features
-
 ** Saving
    - Save the layout of cards
      - Add bookmarks to views or at least to certain cards
@@ -15,3 +14,25 @@
 ** Layouts
    - Thirds / Halfs / Quarter / Full
    - Popups and Bury Cards
+
+* Work Items
+** TODO Add graph papaer background image
+
+* Data Format
+  #+begin_src yaml
+    ---
+    layout:
+      name: 'halves'
+    session:
+      active: '<uri of a node>'
+    nodes:
+      - title: '<some text title>'
+        uri: '<some way to identify the node>'
+        format: 'format of the content'
+        content: 'content'
+  #+end_src
+
+* APIs / Github
+  - API: [[https://pkg.go.dev/github.com/PuerkitoBio/goquery#pkg-index][goquery]]
+  - Github: [[https://github.com/PuerkitoBio/goquery#api][goquery]]
+

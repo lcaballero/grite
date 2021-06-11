@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Forced Evolution</title>
     <link href="/css/reset.css" rel="stylesheet"/>
+    <link href="/css/ul.css" rel="stylesheet"/>
     <link href="/css/main.css" rel="stylesheet"/>
     <script src="/js/axios.min.js"></script>
     <script src="/js/voca.js"></script>
@@ -15,7 +16,7 @@
 
     <div class="main">
 
-      <div class="help">
+      <div class="help closed">
         <div class="modal frame">
           <h1>Help</h1>
           <article>
@@ -38,7 +39,34 @@
 
       <div class="window layout half">
 
-        <section class="frame card">
+        <section class="frame card" nav="1">
+          <div>
+            <h2>Index</h2>
+            <div>
+              <ul>
+                <li>Tools
+	               <ul>
+	                 <li>Setting List</li>
+	                 <li>Story Types</li>
+	                 <li>Characters</li>
+                </ul></li>
+                <li>Glossary</li>
+                <li>Characters
+	               <ul>
+	                 <li>People / Companions</li>
+	                 <li>Nations</li>
+                </ul></li>
+                <li>Question Log</li>
+                <li>Scenes</li>
+                <li>Research</li>
+                <li>Book Structure</li>
+              </ul>
+            </div>
+          </div>
+          
+        </section>
+
+        <section class="frame card" nav="2">
           <h1>Index</h1>
           <ul>
             <li>
@@ -63,7 +91,7 @@
           </ul>
         </section>
 
-        <section class="frame card active">
+        <section class="frame card" nav="3">
           <h1>Story Types</h1>
           <tags>
             <tag>Writing Tool</tag>
@@ -75,7 +103,7 @@
           </ul>
         </section>
 
-        <section class="frame card">
+        <section class="frame card" nav="4">
           <h2>How will the MC recruit from the MOB?</h2>
           <ol>
             <li>
@@ -97,7 +125,7 @@
           </ol>
         </section>
 
-        <section class="frame card">
+        <section class="frame card" nav="5">
           <h2>Characters</h2>
           <ul>
             <li>Dosier</li>
@@ -105,11 +133,11 @@
           </ul>
         </section>
 
-        <section class="frame card">
+        <section class="frame card" nav="6">
           <h1>Recent</h1>
         </section>
 
-        <section class="frame card">
+        <section class="frame card" nav="7">
           <h1>Favorites</h1>
         </section>
 
