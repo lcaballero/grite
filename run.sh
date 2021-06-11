@@ -100,7 +100,7 @@ run-jaded() {
             jade -stdbuf -fmt \
                  -pkg main \
                  -basedir web \
-                 index.jade > /dev/null 2>&1 && \
+                 index.pug > /dev/null 2>&1 && \
             go install && \
             jaded > web/index.html.pre &&
             sed -E '/^$/d' web/index.html.pre > web/index.html.bak
