@@ -1,4 +1,5 @@
-function dataLoad() {
+function dataLoad(next) {
+   console.log('dataLoad')
    axios.get("/cms-db.json")
       .then(function(resp) {
          var cmsDB = resp.data;
@@ -17,6 +18,6 @@ function dataLoad() {
          console.log(err);
       })
       .then(function() {
-         //console.log('always')
+         next()
       });
 }

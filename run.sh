@@ -8,7 +8,10 @@ rm-bak() {
 }
 
 clean() {
+    rm-bak
     rm -rf "$DST" "$BLD"
+    find . -type f -name "*.bak" | xargs rm
+    find . -type f -name "*.pre" | xargs rm
 }
 
 build() {
