@@ -1,0 +1,18 @@
+#+begin_src yaml :tangle plotting.yaml
+---
+
+#+end_src
+* Plotting
+  - Promise
+    - How to Show Promise
+      - Give a Tone like Comedy, Tragedy, Heros Journet, etc
+      - Hint at the Character Arc
+      - Set some plot expectations
+        - Core plot vs umbrella plot
+          - Romance (love story) while running due to aliens invasion
+  - Progress
+    - There was a map at the front of the book
+    - Could watch as character moves toward an endpoint
+    - Natural timebomb to reading a book
+    - A sense of prograss, an illusion of progress
+            

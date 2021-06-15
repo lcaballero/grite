@@ -4,3 +4,4 @@ changes.txt
 .build
 *.bak
 *.pre
+node_modules

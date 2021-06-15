@@ -3,6 +3,10 @@
 DST=".dist"
 BLD=".build"
 
+test-js() {
+    (cd src/test-web && npm run test)
+}
+
 rm-bak() {
     find . -type f -name "*.*~" | xargs rm
 }
@@ -76,9 +80,11 @@ to-html() {
     convert-to-html "tools.characters"
     convert-to-html "tools.story-types"
     convert-to-html "recent"
+    convert-to-html "reading"
     convert-to-html "favorites"
     convert-to-html "q1"
     convert-to-html "dev-tools"
+    convert-to-html "plotting"
 
     # (
     #     cd .build && \

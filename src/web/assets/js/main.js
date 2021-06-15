@@ -8,11 +8,6 @@ function addCss(file) {
 function setupKeyboard() {
 
    keyboardJS.withContext("card-nav", () => {
-      keyboardJS.bind('h', (ev) => {
-         var help = document.querySelector('.help');
-         help.classList.toggle("closed");
-      });
-
       keyboardJS.bind('j', (ev) => {
          activeNode().classList.toggle("active")
          activeInc();
@@ -35,7 +30,7 @@ function setupKeyboard() {
          var active = activeNode();
          active.classList.toggle("active");
          active.scrollIntoView();
-         document.querySelector("body").scrollIntoView();
+         scrollTo(0, 0);
       });
 
       keyboardJS.bind('f', (ev) => {
@@ -46,10 +41,29 @@ function setupKeyboard() {
          active.scrollIntoView();
       });
 
-      keyboardJS.bind("l", (ev) => {
+      keyboardJS.bind(["l", "h"], (ev) => {
          var active = activeNode();
-         console.log("open right");
-         console.log(geom(active));
+         var rawRow = active.getAttribute("row");
+         var rawCol = active.getAttribute("col");
+         var row = parseInt(rawRow);
+         var col = parseInt(rawCol);
+
+         var sel = `.card[row="${row}"][col="${col+1}"]`;
+         var left = document.querySelector(sel);
+
+         var isClosed = left.classList.contains("closed");
+         if (isClosed && ev.key == "l") {
+            left.classList.toggle("closed");
+            left.classList.toggle("active");
+            active.parentNode.classList.toggle("has-selection");
+            return
+         }
+         if (!isClosed && ev.key == "h") {
+            left.classList.toggle("closed");
+            left.classList.toggle("active");
+            active.parentNode.classList.toggle("has-selection");
+            return
+         }
       });
 
       keyboardJS.bind("", (ev) => {
