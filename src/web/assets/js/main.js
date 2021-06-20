@@ -1,77 +1,81 @@
-function addCss(file) {
-   var k = document.createElement("link");
-   k.setAttribute('href', file);
-   k.setAttribute('rel', 'stylesheet');
-   document.head.appendChild(k);
-}
+function setupKeyboard(repo, db) {
+   ModeStatus(repo);
+   ActiveNode(repo, db);
 
-function setupKeyboard() {
+   function navDown() {
+      activeNode().classList.toggle("active")
+      activeInc();
+      var active = activeNode();
+      active.classList.toggle("active");
+      active.scrollIntoView();
+   }
+
+   function navUp() {
+      activeNode().classList.toggle("active");
+      activeDec();
+      var active = activeNode();
+      active.classList.toggle("active");
+      active.scrollIntoView();
+   }
+
+   function navTop() {
+      activeNode().classList.toggle("active");
+      activeFirst();
+      var active = activeNode();
+      active.classList.toggle("active");
+      active.scrollIntoView();
+      scrollTo(0, 0);
+   }
+
+   function navBottom() {
+      activeNode().classList.toggle("active");
+      activeLast();
+      var active = activeNode();
+      active.classList.toggle("active");
+      active.scrollIntoView();
+   }
+
+   function navLeftAndRight() {
+      var active = activeNode();
+      var rawRow = active.getAttribute("row");
+      var rawCol = active.getAttribute("col");
+      var row = parseInt(rawRow);
+      var col = parseInt(rawCol);
+
+      var sel = `.card[row="${row}"][col="${col+1}"]`;
+      var left = document.querySelector(sel);
+
+      var isClosed = left.classList.contains("closed");
+      if (isClosed && ev.key == "l") {
+         left.classList.toggle("closed");
+         left.classList.toggle("active");
+         active.parentNode.classList.toggle("has-selection");
+         return
+      }
+      if (!isClosed && ev.key == "h") {
+         left.classList.toggle("closed");
+         left.classList.toggle("active");
+         active.parentNode.classList.toggle("has-selection");
+         return
+      }
+   }
+   var navLeft = navLeftAndRight;
+   var navRight = navLeftAndRight;
+   function startSearch(ev) {
+      if (ev.key == ":") {
+         toggleSearch();
+         keyboardJS.setContext('searching-card');
+      }
+   }
 
    keyboardJS.withContext("card-nav", () => {
-      keyboardJS.bind('j', (ev) => {
-         activeNode().classList.toggle("active")
-         activeInc();
-         var active = activeNode();
-         active.classList.toggle("active");
-         active.scrollIntoView();
-      });
-
-      keyboardJS.bind('k', (ev) => {
-         activeNode().classList.toggle("active");
-         activeDec();
-         var active = activeNode();
-         active.classList.toggle("active");
-         active.scrollIntoView();
-      });
-
-      keyboardJS.bind('p', (ev) => {
-         activeNode().classList.toggle("active");
-         activeFirst();
-         var active = activeNode();
-         active.classList.toggle("active");
-         active.scrollIntoView();
-         scrollTo(0, 0);
-      });
-
-      keyboardJS.bind('f', (ev) => {
-         activeNode().classList.toggle("active");
-         activeLast();
-         var active = activeNode();
-         active.classList.toggle("active");
-         active.scrollIntoView();
-      });
-
-      keyboardJS.bind(["l", "h"], (ev) => {
-         var active = activeNode();
-         var rawRow = active.getAttribute("row");
-         var rawCol = active.getAttribute("col");
-         var row = parseInt(rawRow);
-         var col = parseInt(rawCol);
-
-         var sel = `.card[row="${row}"][col="${col+1}"]`;
-         var left = document.querySelector(sel);
-
-         var isClosed = left.classList.contains("closed");
-         if (isClosed && ev.key == "l") {
-            left.classList.toggle("closed");
-            left.classList.toggle("active");
-            active.parentNode.classList.toggle("has-selection");
-            return
-         }
-         if (!isClosed && ev.key == "h") {
-            left.classList.toggle("closed");
-            left.classList.toggle("active");
-            active.parentNode.classList.toggle("has-selection");
-            return
-         }
-      });
-
-      keyboardJS.bind("", (ev) => {
-         if (ev.key == ":") {
-            toggleSearch();
-            keyboardJS.setContext('searching-card');
-         }
-      });
+      keyboardJS.bind('j', navDown);
+      keyboardJS.bind('k', navUp);
+      keyboardJS.bind('p', navTop);
+      keyboardJS.bind('f', navBottom);
+      keyboardJS.bind("l", navLeft);
+      keyboardJS.bind("h", navRight);
+      keyboardJS.bind("", startSearch);
    });
 
    keyboardJS.withContext("searching-card", () => {
@@ -118,41 +122,14 @@ function toggleSearch() {
    search.classList.toggle("closed");
 }
 
-function activeFirst() {
-   data.active = 1;
-}
-
-function activeLast() {
-   data.active = max;
-}
-
-function activeInc() {
-   data.active++;
-   data.active = (data.active > max) ? max : data.active;
-   data.active = (data.active < 1) ? 1 : data.active;
-}
-
-function activeDec() {
-   data.active--;
-   data.active = (data.active > max) ? max : data.active;
-   data.active = (data.active < 1) ? 1 : data.active;
-}
-
-function navAttribute(val) {
-   return `[nav="${val}"]`
-}
-
-function activeNode() {
-   return document.querySelector(navAttribute(data.active));
-}
-
 document.addEventListener("DOMContentLoaded", function() {
-   function next() {
+   function next(db) {
       var active = activeNode();
       active.classList.toggle("active");
-      var cards = document.querySelectorAll("[nav]");
-      max = cards.length;
-      setupKeyboard();
+
+      max = db.length;
+      var repo = NewRepo();
+      setupKeyboard(repo, db);
    }
    dataLoad(next);
 });

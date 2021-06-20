@@ -1,8 +1,7 @@
 function NewGrid(r, c) {
    var maxRows = r;
    var maxCols = c;
-   r = 0;
-   c = 0;
+   r = 0; c = 0;
    return {
       up: function() {
          r--;
