@@ -7,7 +7,7 @@
 * NPM
   The starting dependencies is a basic app with this minimal amount of
   NPM depedencies.
-  
+
   #+begin_src sh
   npm init -y
   npm install --save parcel-bundler
@@ -73,5 +73,5 @@
     }
 
     store.subscribe(render);
-    sotre.dispatch({type: "@@redux/INIT"})
+    store.dispatch({type: "@@redux/INIT"})
   #+end_src

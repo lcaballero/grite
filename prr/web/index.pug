@@ -1,0 +1,15 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title
+      | Forced Evolution
+    script
+      | var data = { active: 1 };
+      | var module = { exports : {} };
+    include partials/css.pug
+  body
+    div.main
+      #app
+        | app
+    script(src="index.jsx")

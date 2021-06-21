@@ -15,27 +15,3 @@ function ActiveNode(repo, db) {
 }
 
 module.exports.ActiveNode = ActiveNode;
-
-/*
-
-function activeFirst() {
-   data.active = 1;
-}
-
-function activeLast() {
-   data.active = max;
-}
-
-function activeInc() {
-   data.active++;
-   data.active = (data.active > max) ? max : data.active;
-   data.active = (data.active < 1) ? 1 : data.active;
-}
-
-function activeDec() {
-   data.active--;
-   data.active = (data.active > max) ? max : data.active;
-   data.active = (data.active < 1) ? 1 : data.active;
-}
-
-*/
