@@ -1,6 +1,10 @@
 {
+    "nav": {
+        "row": 1,
+        "col": 1
+    },
     "mode": {
-        "name": "edit",
+        "name": "walk",
         "show": true
     },
     "names": [

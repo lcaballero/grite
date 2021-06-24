@@ -1,3 +1,21 @@
+.cf:before, .cf:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.cf:after {
+  clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+  zoom: 1;
+}
+
+
 body {
     background-color: #eee;
     font-size: 1.2em;
@@ -90,7 +108,7 @@ tag {
 
 /* cards */
 .card + .card {
-    margin: 10px 0;
+    margin: 32px 0;
 }
 
 /* main view port */
@@ -196,9 +214,28 @@ tag {
     top: 0;
     right: 0;
 
+    font-family: monospace;
+
     color: white;
     background-color: rgb(0 113 227);
-    font-family: monospace;
     padding: 0px 12px 0px 20px;
     border-radius: 0 0 0 14px;
+}
+
+/* tab direction select knobs */
+.card .tics {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.card .tic {
+    font-family: monospace;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.card .tics > a {
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }

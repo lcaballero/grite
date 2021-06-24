@@ -4,10 +4,12 @@ import { Provider, useStore } from 'react-redux';
 
 import { store, rootReducer } from './assets/js/configure-store.js';
 import { App } from './assets/js/app.jsx';
+import { Keyboard } from './assets/js/kb.js';
 
 function render() {
    ReactDOM.render(
       <Provider store={store}>
+         <Keyboard/>
          <App/>
       </Provider>,
       document.getElementById("app")
@@ -15,6 +17,6 @@ function render() {
 }
 
 store.subscribe(render);
-store.dispatch({type: "@@redux/INIT"})
+store.dispatch({type: "@@redux/INIT"});
 
 window.store = store;

@@ -1,20 +1,23 @@
 import state from './cms-db.json';
 import { createStore } from 'redux';
+import { Keyboard } from './kb.js';
+import * as GridNav from './grid-nav.js';
 
 function initialState() {
-   return state;
+   return GridNav.init(state);
 }
 
 function rootReducer(change, action) {
    if (!change) {
       change = initialState();
    }
-   console.log('rootReducer');
-   console.log('change', change);
-   console.log('action', action);
    switch (action.type) {
-      case "change-mode":
-         return { ...change, mode:action.payload }
+      case "enter-edit-mode":
+         return { ...change, mode:{name:"edit",show:true} };
+      case "enter-walk-mode":
+         return { ...change, mode:{name:"walk",show:true} };
+      default:
+         return GridNav.reducer(change, action);
    }
    return change;
 }
