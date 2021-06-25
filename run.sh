@@ -4,7 +4,11 @@ DST=".dist"
 BLD=".build"
 
 test-js() {
-    (cd src/test-web && npm run test)
+    (cd src/ && npm run test)
+}
+
+help-js() {
+    (cd src/ && ./node_modules/.bin/jest -h)
 }
 
 rm-bak() {

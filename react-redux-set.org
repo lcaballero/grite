@@ -1,0 +1,77 @@
+* React + Redux
+  The basic usage for react and redux captured here because:
+  - This project is using Parcel.
+  - It's always a pain to write something React/Redux after not
+    writing anything front-end for a long while.
+
+* NPM
+  The starting dependencies is a basic app with this minimal amount of
+  NPM depedencies.
+
+  #+begin_src sh
+  npm init -y
+  npm install --save parcel-bundler
+  npm install --save react
+  npm install --save react-dom
+  npm install --save redux
+  npm install --save react-redux
+  #+end_src
+
+* React+Redux
+
+  #+begin_src jsx
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Provider, useStore } from 'react-redux';
+    import { createStore } from 'redux';
+
+    function initialState() {
+        return {
+            names: [{hero: 'batman', name:'bruce wayne'}]
+        }
+    }
+
+    function rootReducer(change, action) {
+        if (!change) {
+            change = initialState();
+        }
+        return change;
+    }
+
+    const store = createStore(rootReducer, iniitialState);
+
+    function Box() {
+        let state = useStore().getState()
+        let name = state.names[0];
+        return (
+            <div>
+            <ul>
+            <li>{name.hero}</li>
+            <li>{name.name}</li>
+            </ul>
+            <dl>
+            <dt>Location</dt>
+            <dd>{ location.href }</dd>
+            </dl>
+            </div>
+        );
+    }
+
+    function App() {
+        return <div>
+          </Box/>
+        </div>;
+    }
+
+    function render() {
+        ReactDOM.render(
+            <Provider store={store}>
+              <App/>
+            </Provider>,
+            document.getElementById("app")
+        );
+    }
+
+    store.subscribe(render);
+    store.dispatch({type: "@@redux/INIT"})
+  #+end_src

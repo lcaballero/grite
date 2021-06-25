@@ -5,3 +5,9 @@ changes.txt
 *.bak
 *.pre
 node_modules
+.cache
+prr/web/dist
+dist/
+
+*.css.map
+*.js.map
