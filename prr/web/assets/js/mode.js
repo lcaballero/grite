@@ -8,6 +8,9 @@ export function actions() {
       },
       enterEdit: () => {
          store.dispatch({type:"enter-edit-mode"})
+      },
+      dumpState: () => {
+         console.log(store.getState())
       }
    };
 }

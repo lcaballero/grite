@@ -118,20 +118,42 @@ function NodeCard(props) {
    );
 }
 
-export function NodeCards(props) {
+export function CardColumns() {
    let state = useStore().getState();
-   let cards = state.entries.map(
+   let { row, col } = state.nav
+   return (
+      <div className="cols">
+      {
+         state.entries.map(
+            (e,i) => {
+               return (
+                  <NodeCards
+                     key={`col-${i}`}
+                     entries={e}
+                     col={i+1}
+                     nav={state.nav}
+                     mode={state.mode}
+                  />
+               );
+            })
+      }
+      </div>
+   );
+}
+
+export function NodeCards(props) {
+   let cards = props.entries.map(
       (e, i) => (
          <NodeCard key={i+1}
-                   col={props.grid.col}
+                   col={props.col}
                    row={i+1}
-                   nav={state.nav}
-                   mode={state.mode.name}
+                   nav={props.nav}
+                   mode={props.mode.name}
                    {...e}/>
       )
    )
    return (
-      <div className="col" col={props.grid.col}>
+      <div className="col" col={props.col}>
          { cards }
       </div>
    );

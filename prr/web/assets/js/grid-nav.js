@@ -35,14 +35,15 @@ export function action() {
 
 export function init(state) {
    let { row, col } = state.nav;
+   let minCol = 1;
    let nav = {
       ...state.nav,
       row: row || 1,
       col: col || 1,
-      minCol: 1, // for cols
+      minCol: minCol, // for cols
       maxCol: 1,
       minRow: 1, // for rows
-      maxRow: state.entries.length
+      maxRow: state.entries[minCol-1].length
    };
    return { ...state, nav: nav };
 }
