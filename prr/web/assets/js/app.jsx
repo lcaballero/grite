@@ -1,10 +1,13 @@
 import React from 'react';
+import { useStore } from 'react-redux';
 import { CardColumns } from './node-cards.jsx';
-import { ModeStatus } from './mode-status.jsx';
+import { ModeStatus, ModeLayout} from './mode-status.jsx';
 
 export function App() {
-   return <div className="half">
+   let state = useStore().getState();
+   return <div className={state.session.layout.name}>
       <ModeStatus />
+      <ModeLayout />
       <CardColumns />
    </div>;
 }

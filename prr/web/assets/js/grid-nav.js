@@ -41,16 +41,16 @@ export function init(state) {
       row: row || 1,
       col: col || 1,
       minCol: minCol, // for cols
-      maxCol: 1,
-      minRow: 1, // for rows
-      maxRow: state.entries[minCol-1].length
+      minRow: 1 // for rows
    };
    return { ...state, nav: nav };
 }
 
 export function reducer(state, action) {
    let nav = state.nav;
-   let { row, col, minRow, minCol, maxCol, maxRow } = nav;
+   let { row, col, minRow, minCol } = nav;
+   let maxCol = state.entries.length
+   let maxRow = state.entries[col-1].length
    switch (action.type) {
       case types.left.type:
          col = col - 1; break;
@@ -69,6 +69,7 @@ export function reducer(state, action) {
    row = (row < minRow) ? minRow : row;
    col = (col > maxCol) ? maxCol : col;
    col = (col < minCol) ? minCol : col;
+   console.log(action.type, row, col, maxCol)
    state = { ...state, nav: { ...nav, row:row, col:col } };
    return state;
 }

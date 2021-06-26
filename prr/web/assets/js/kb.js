@@ -21,8 +21,8 @@ function InitKeyboard() {
       keyboardJS.bind('k', navUp);
       keyboardJS.bind('p', navTop);
       keyboardJS.bind('f', navBottom);
-      keyboardJS.bind('l', navLeft);
-      keyboardJS.bind('h', navRight);
+      keyboardJS.bind('h', navLeft);
+      keyboardJS.bind('l', navRight);
       keyboardJS.bind(['e', 'space', 'tab'], (ev) => {
          ev.preventDefault()
          keyboardJS.setContext('edit-mode')
