@@ -1,11 +1,8 @@
 {
+
     "nav": {
         "row": 1,
         "col": 1
-    },
-    "mode": {
-        "name": "walk",
-        "show": true
     },
     "names": [
         {
@@ -16,7 +13,14 @@
     "session": {
         "name": "",
         "crumbs": null,
-        "layout": "",
+        "layout": {
+            "name":"half",
+            "show":true,
+        },
+        "mode": {
+            "name": "walk",
+            "show": true
+        },
         "filters": {
             "includes": null,
             "excludes": null
@@ -96,6 +100,32 @@
                 "yaml": "---\n",
                 "file": "web/docs/tools.story-types.org",
                 "name": "web/docs/tools.story-types",
+                "tags": null
+            }
+        ],
+        [
+            {
+                "html": "\u003cdiv\u003e\n  \u003ch2\u003eStory Types\u003c/h2\u003e\n  \u003cdiv\u003e\n    \u003cul\u003e\n      \u003cli\u003eHero\u0026#39;s Journey\u003c/li\u003e\n      \u003cli\u003eRags to Riches\u003c/li\u003e\n      \u003cli\u003eUnderdog Story\u003c/li\u003e\n    \u003c/ul\u003e\n  \u003c/div\u003e\n\u003c/div\u003e",
+                "org": "#+begin_src yaml :tangle tools.story-types.yaml\n  ---\n\n\n#+end_src\n* Story Types\n  - Hero's Journey\n  - Rags to Riches\n  - Underdog Story\n",
+                "yaml": "---\n",
+                "file": "web/docs/tools.story-types.org",
+                "name": "web/docs/tools.story-types",
+                "tags": null
+            },
+            {
+                "html": "\u003cdiv\u003e\n  \u003ch2\u003eIndex\u003c/h2\u003e\n  \u003cdiv\u003e\n    \u003cul\u003e\n      \u003cli\u003eTools\n\t\u003cul\u003e\n\t  \u003cli\u003eSetting List\u003c/li\u003e\n\t  \u003cli\u003eStory Types\u003c/li\u003e\n\t  \u003cli\u003eCharacters\u003c/li\u003e\n      \u003c/ul\u003e\u003c/li\u003e\n      \u003cli\u003eGlossary\u003c/li\u003e\n      \u003cli\u003eCharacters\n\t\u003cul\u003e\n\t  \u003cli\u003ePeople / Companions\u003c/li\u003e\n\t  \u003cli\u003eNations\u003c/li\u003e\n      \u003c/ul\u003e\u003c/li\u003e\n      \u003cli\u003eQuestion Log\u003c/li\u003e\n      \u003cli\u003eScenes\u003c/li\u003e\n      \u003cli\u003eResearch\u003c/li\u003e\n      \u003cli\u003eBook Structure\u003c/li\u003e\n    \u003c/ul\u003e\n  \u003c/div\u003e\n\u003c/div\u003e",
+                "org": "#+begin_src yaml :tangle index.yaml\n---\n\n#+end_src\n* Index\n  - Tools\n    - Setting List\n    - Story Types\n    - Characters\n  - Glossary\n  - Characters\n    - People / Companions\n    - Nations\n  - Question Log\n  - Scenes\n  - Research\n  - Book Structure\n",
+                "yaml": "---\n",
+                "file": "web/docs/index.org",
+                "name": "web/docs/index",
+                "tags": null
+            },
+            {
+                "html": "\u003cdiv\u003e\n  \u003ch2\u003ePlotting\u003c/h2\u003e\n  \u003cdiv\u003e\n    \u003cul\u003e\n      \u003cli\u003ePromise\n\t\u003cul\u003e\n\t  \u003cli\u003eHow to Show Promise\n\t    \u003cul\u003e\n\t      \u003cli\u003eGive a Tone like Comedy, Tragedy, Heros Journet, etc\u003c/li\u003e\n\t      \u003cli\u003eHint at the Character Arc\u003c/li\u003e\n\t      \u003cli\u003eSet some plot expectations\n\t\t\u003cul\u003e\n\t\t  \u003cli\u003eCore plot vs umbrella plot\n\t\t    \u003cul\u003e\n\t\t      \u003cli\u003eRomance (love story) while running due to aliens invasion\u003c/li\u003e\n\t\t  \u003c/ul\u003e\u003c/li\u003e\n\t      \u003c/ul\u003e\u003c/li\u003e\n\t  \u003c/ul\u003e\u003c/li\u003e\n      \u003c/ul\u003e\u003c/li\u003e\n      \u003cli\u003eProgress\n\t\u003cul\u003e\n\t  \u003cli\u003eThere was a map at the front of the book\u003c/li\u003e\n\t  \u003cli\u003eCould watch as character moves toward an endpoint\u003c/li\u003e\n\t  \u003cli\u003eNatural timebomb to reading a book\u003c/li\u003e\n\t  \u003cli\u003eA sense of prograss, an illusion of progress\u003c/li\u003e\n      \u003c/ul\u003e\u003c/li\u003e\n    \u003c/ul\u003e\n  \u003c/div\u003e\n\u003c/div\u003e",
+                "org": "#+begin_src yaml :tangle plotting.yaml\n---\n\n#+end_src\n* Plotting\n  - Promise\n    - How to Show Promise\n      - Give a Tone like Comedy, Tragedy, Heros Journet, etc\n      - Hint at the Character Arc\n      - Set some plot expectations\n        - Core plot vs umbrella plot\n          - Romance (love story) while running due to aliens invasion\n  - Progress\n    - There was a map at the front of the book\n    - Could watch as character moves toward an endpoint\n    - Natural timebomb to reading a book\n    - A sense of prograss, an illusion of progress\n            \n",
+                "yaml": "---\n",
+                "file": "web/docs/plotting.org",
+                "name": "web/docs/plotting",
                 "tags": null
             }
         ]

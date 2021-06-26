@@ -7,19 +7,19 @@ function initialState() {
    return GridNav.init(state);
 }
 
-function rootReducer(change, action) {
-   if (!change) {
-      change = initialState();
+function rootReducer(state, action) {
+   if (!state) {
+      state = initialState();
    }
    switch (action.type) {
       case "enter-edit-mode":
-         return { ...change, mode:{name:"edit",show:true} };
+         return { ...state, mode:{name:"edit",show:true} };
       case "enter-walk-mode":
-         return { ...change, mode:{name:"walk",show:true} };
+         return { ...state, mode:{name:"walk",show:true} };
       default:
-         return GridNav.reducer(change, action);
+         return GridNav.reducer(state, action);
    }
-   return change;
+   return state;
 }
 
 const store = createStore(rootReducer, initialState());

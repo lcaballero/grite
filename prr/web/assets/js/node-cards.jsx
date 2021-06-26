@@ -1,8 +1,7 @@
-import ReactDOM from 'react-dom';
 import React, { useEffect, useRef } from 'react';
 import { useStore } from 'react-redux';
-import scrollIntoView from 'smooth-scroll-into-view-if-needed';
 import { geom } from './geom';
+import { ActionEditCard } from './action-edit-card';
 
 function Tic(props) {
    let { w, h } = props;
@@ -40,7 +39,7 @@ function Tic(props) {
    return (
       <svg
          ref={ref}
-         className="tic"
+         className="tic abs"
          xmlns="http://www.w3.org/2000/svg"
          width={w +"px"}
          height={h + "px"}>
@@ -55,7 +54,6 @@ function Tic(props) {
                x="50%"
                y="50%"
                textAnchor="middle"
-               stroke="white"
                fill="white"
                fontSize="15px"
                dy=".3em">{props.letter}</text>
@@ -65,15 +63,11 @@ function Tic(props) {
 }
 
 function TagList(props) {
-   return (
-      <aside className="tags">{props.tags}</aside>
-   )
+   return <aside className="tags">{props.tags}</aside>
 }
 
 function Coords(props) {
-   return (
-      <aside className="coords">row={props.row} col={props.col}</aside>
-   )
+   return <aside className="coords">row={props.row} col={props.col}</aside>
 }
 
 function NodeCard(props) {
@@ -84,21 +78,18 @@ function NodeCard(props) {
    let ref = useRef(null);
    useEffect(() => {
       if (isActive) {
-         ref.current.scrollIntoViewIfNeeded({
+         ref.current.scrollIntoView({
             block: 'center',
-            inline: 'center',
             behavior: 'smooth',
             alignToTop: true
          });
-      }
-      if (row == 1) {
-         ref.current.scrollIntoViewIfNeeded();
       }
    })
    let isEdit = props.mode == "edit";
    let c = `r${row}c${col}`;
    let cls = `frame card ${ show } ${ c }`;
-   let tics = `tics ${ isEdit && isActive ? "" : "closed" }`;
+   // TODO: make isEdit for moving card or walking the graph in specific way
+   let tics = `abs tics ${ isEdit && isActive ? "closed" : "closed" }`;
    let getParent = () => { return ref; }
    return (
       <section className={ cls }
@@ -114,6 +105,7 @@ function NodeCard(props) {
             <Tic letter="j" getParent={getParent}/>
             <Tic letter="k" getParent={getParent}/>
          </div>
+         <ActionEditCard show={isEdit && isActive} getParent={getParent}/>
       </section>
    );
 }
@@ -132,7 +124,7 @@ export function CardColumns() {
                      entries={e}
                      col={i+1}
                      nav={state.nav}
-                     mode={state.mode}
+                     mode={state.session.mode}
                   />
                );
             })
