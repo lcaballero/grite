@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useStore } from 'react-redux';
 import { geom } from './geom';
 import { ActionEditCard } from './action-edit-card';
+import * as mode from './mode';
 
 function Tic(props) {
    let { w, h } = props;
@@ -77,15 +78,16 @@ function NodeCard(props) {
    let show = isActive ? "active" : "";
    let ref = useRef(null);
    useEffect(() => {
-      if (isActive) {
-         ref.current.scrollIntoView({
-            block: 'center',
-            behavior: 'smooth',
-            alignToTop: true
-         });
+      if (!isActive) {
+         return;
       }
+      ref.current.scrollIntoView({
+         block: 'center',
+         behavior: 'smooth',
+         alignToTop: true
+      });
    })
-   let isEdit = props.mode == "edit";
+   let isEdit = mode.isEdit(props.mode);
    let c = `r${row}c${col}`;
    let cls = `frame card ${ show } ${ c }`;
    // TODO: make isEdit for moving card or walking the graph in specific way
@@ -112,23 +114,30 @@ function NodeCard(props) {
 
 export function CardColumns() {
    let state = useStore().getState();
-   let { row, col } = state.nav
+   let { row, col } = state.nav;
+   let isEdit = mode.isEdit(state.session.mode.name);
+   let c = `cols cf ${ isEdit ? "has-selection" : "" }`
+   let ref = useRef(null);
+   let getViewPort = () => { return ref; }
    return (
-      <div className="cols">
-      {
-         state.entries.map(
-            (e,i) => {
-               return (
-                  <NodeCards
-                     key={`col-${i}`}
-                     entries={e}
-                     col={i+1}
-                     nav={state.nav}
-                     mode={state.session.mode}
-                  />
-               );
-            })
-      }
+      <div className="view-port" ref={ref}>
+         <div className={c}>
+            {
+               state.entries.map(
+                  (e,i) => {
+                     return (
+                        <NodeCards
+                           getViewPort={ getViewPort }
+                           key={`col-${i}`}
+                           entries={e.cards}
+                           col={i+1}
+                           nav={state.nav}
+                           mode={state.session.mode}
+                        />
+                     );
+                  })
+            }
+         </div>
       </div>
    );
 }
@@ -137,6 +146,7 @@ export function NodeCards(props) {
    let cards = props.entries.map(
       (e, i) => (
          <NodeCard key={i+1}
+                   getViewPort={props.getViewPort}
                    col={props.col}
                    row={i+1}
                    nav={props.nav}

@@ -1,6 +1,0 @@
----
-name: "stub"
-layout: "halves"
-filters:
-  includes:
-    - "main"

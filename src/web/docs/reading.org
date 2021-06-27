@@ -1,8 +1,0 @@
-#+begin_src yaml :tangle reading.yaml
----
-
-#+end_src
-* Reading
-  - [[https://dailysciencefiction.com/][Daily Science Fiction]]
-  - [[https://timstout.wordpress.com/][Time Stoute (Blog: Writer & Editor)]]
-  - [[https://youtu.be/LuD2Aa0zFiA][YouTube: Every Story is the Same]]

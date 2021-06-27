@@ -1,9 +1,25 @@
+.cf:before, .cf:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.cf:after {
+  clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+  zoom: 1;
+}
+/*=========================================================================*/
+
 body {
     background-color: #eee;
-    font-size: 1.2em;
     line-height: 1.2em;
-
-    background-image: url(/img/background.png);
+    background-image: url(../img/background.png);
 }
 h1,h2 {
     margin:0;
@@ -28,7 +44,7 @@ tag {
 }
 
 /* Card */
-.card {
+.card, .panel {
     border-radius: 3px;
     border: 1px solid #000;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.30);
@@ -45,20 +61,21 @@ tag {
 }
 
 /* layout */
-.third .col { width: 33.3%; }
-.half .col {  width: 50%; }
-.full .col { width: 100%; }
-.quarter .col { width: 25%; }
-
+.view-port {
+    overflow: scroll;
+    position: relative;
+}
+.cols {
+    width: 135%;
+}
+.half .col {  width: 20%; }
 .col {
     float: left;
+    padding-right: 16px;
+    padding-left: 16px;
 }
-.col + .col {
-    padding-left: 5px;
-}
-.col:first-child {
-    padding-right: 5px;
-}
+
+
 .has-selection .card {
     opacity: 20%;
 }
@@ -71,7 +88,6 @@ tag {
     font-family: monospace;
     color: white;
     background-color: rgb(0 113 227 / 70%);
-    font-weight: bold;
     padding-left: 6px;
     padding-right: 6px;
     text-align: right;
@@ -90,13 +106,14 @@ tag {
 
 /* cards */
 .card + .card {
-    margin: 10px 0;
+    margin: 32px 0;
 }
 
 /* main view port */
 .main {
     position: relative;
-    margin: 32px 10px;
+    margin-top: 32px;
+    margin-bottom: 32px;
 }
 
 /* help */
@@ -188,17 +205,46 @@ tag {
     display: inline-block;
 }
 
-.mode {
+.abs, .panel {
+    position: absolute;
+}
+.rel {
     position: relative;
 }
-.mode .plane {
-    position: fixed;
-    top: 0;
-    right: 0;
 
-    color: white;
-    background-color: rgb(0 113 227);
-    font-family: monospace;
-    padding: 0px 12px 0px 20px;
-    border-radius: 0 0 0 14px;
+/* tab direction select knobs */
+.card .tics {
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
+.card .tic {
+    font-family: monospace;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.card .tics > a {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+
+.action-edit {
+    z-index: 10;
+}
+.action-edit dl {
+    margin-top: 4px;
+}
+.action-edit dt > svg {
+    top: -2px;
+}
+.action-edit dd {
+    margin-left: 28px;
+}
+.action-edit dd b {
+    color: rgb(0 113 227);
+    text-decoration: underline;
+}
+

@@ -1,0 +1,44 @@
+/* .cols { */
+/*     opacity: 20%; */
+/* } */
+.mode-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.mode {
+    display: inline-block;
+    float:left;
+}
+.mode .label {
+    padding-right: 6px;
+    display: inline-block;
+}
+.mode.item {
+    font-family: monospace;
+
+    color: white;
+    background-color: rgb(0 113 227);
+    padding: 0px 12px 0px 12px;
+}
+
+.palette {
+    display: inline-block;
+    margin-left: 20px;
+}
+.palette .cl {
+    width: 19px;
+    height: 19px;
+}
+.palette > ul {
+    list-style-type: none;
+    display: inline;
+    padding:0;
+    float: left;
+    margin-right: 19px;
+}
+.palette li {
+    display: inline-block;
+}

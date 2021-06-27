@@ -37,8 +37,9 @@ export function ActionEditCard(props) {
    useEffect(() => {
       let g = geom(props.getParent).view;
       let pad = 16;
+      let bt = -1;
       style(ref.current, {
-         top: 0,
+         top: bt,
          left: (g.width + pad),
          width: (g.width * .75)
       });

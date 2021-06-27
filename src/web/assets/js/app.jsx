@@ -1,13 +1,13 @@
 import React from 'react';
 import { useStore } from 'react-redux';
 import { CardColumns } from './node-cards.jsx';
-import { ModeStatus, ModeLayout} from './mode-status.jsx';
+import { ModeLine } from './mode-line.jsx';
 
 export function App() {
    let state = useStore().getState();
-   return <div className={state.session.layout.name}>
-      <ModeStatus />
-      <ModeLayout />
+   let c = `${state.session.layout.name}`
+   return <div unit="App" className={c}>
+      <ModeLine />
       <CardColumns />
    </div>;
 }

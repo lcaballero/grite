@@ -1,9 +1,0 @@
-#+begin_src yaml :tangle tools.story-types.yaml
-  ---
-
-
-#+end_src
-* Story Types
-  - Hero's Journey
-  - Rags to Riches
-  - Underdog Story

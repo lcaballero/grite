@@ -1,6 +1,0 @@
-#+begin_src yaml :tangle favorites.yaml
----
-
-
-#+end_src
-* Favorites

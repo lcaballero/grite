@@ -1,6 +1,0 @@
-#+begin_src yaml :tangle recent.yaml
-  ---
-
-#+end_src
-
-* Recent

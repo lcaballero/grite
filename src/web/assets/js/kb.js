@@ -15,7 +15,7 @@ function InitKeyboard() {
       navTop, navBottom,
       navLeft, navRight
    } = GridNav.action();
-   var { enterWalk, enterEdit, dumpState } = Mode.actions();
+   let mode = Mode.actions();
    keyboardJS.withContext("card-nav", () => {
       keyboardJS.bind('j', navDown);
       keyboardJS.bind('k', navUp);
@@ -26,15 +26,15 @@ function InitKeyboard() {
       keyboardJS.bind(['e', 'space', 'tab'], (ev) => {
          ev.preventDefault()
          keyboardJS.setContext('edit-mode')
-         enterEdit()
+         mode.enterEdit()
       });
-      keyboardJS.bind('ctrl + shift + enter', dumpState);
+      keyboardJS.bind('ctrl + shift + enter', mode.dumpState);
    });
    keyboardJS.withContext("edit-mode", () => {
       keyboardJS.bind(['w', 'space', 'tab'], (ev) => {
          ev.preventDefault()
          keyboardJS.setContext('card-nav')
-         enterWalk()
+         mode.enterWalk()
       })
    })
    keyboardJS.setContext('card-nav');

@@ -8,12 +8,8 @@ html(lang="en")
       | var data = { active: 1 };
       | var module = { exports : {} };
     include partials/css.pug
-    include partials/scripts.pug
   body
-    div.main
-      include partials/mode.pug
-      include partials/help.pug
-      include partials/strip.pug
-      include partials/search.pug
-      include partials/window.pug
-
+    div.main.cf
+      #app
+        | app
+    script(src="index.jsx")

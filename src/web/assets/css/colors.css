@@ -30,12 +30,3 @@
 .cb1 { background-color: #4B8481; }
 .cb2 { background-color: #EEE8A9; }
 
-.palette .cl {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-}
-
-.palette > div {
-    display: inline-block;
-}
